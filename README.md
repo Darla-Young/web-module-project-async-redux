@@ -24,9 +24,9 @@ In this project you'll choose an api to consume. You will build an application f
 
 ### Task 1: Project Set Up
 
-- [ ] Create a forked copy of this project.
-- [ ] Start up the app using `npm start`.
-- [ ] Add your code into the `\src` folder.
+- [x] Create a forked copy of this project.
+- [x] Start up the app using `npm start`.
+- [x] Add your code into the `\src` folder.
 
 ### Task 2: Minimum Viable Product
 
@@ -37,7 +37,7 @@ In this project you'll choose an api to consume. You will build an application f
 - [ ] _Some_ styling must be applied. It can be basic, but the app must not only use browser default stylings
 
 ### Submission Format
-- [ ] If this is your first time connecting a submission, authorize your github account within the codegrade assignment.
-- [ ] Connect your fork to Codegrade using the "Connect Git" button.
-- [ ] Find your newly created fork from the list and push your work to main.
-- [ ] Check this video for details: www.youtube.com/watch?v=fC2BO7dI6IQ
+- [x] If this is your first time connecting a submission, authorize your github account within the codegrade assignment.
+- [x] Connect your fork to Codegrade using the "Connect Git" button.
+- [x] Find your newly created fork from the list and push your work to main.
+- [x] Check this video for details: www.youtube.com/watch?v=fC2BO7dI6IQ
