@@ -1,87 +1,76 @@
 import React, { useState } from 'react';
 import './App.css';
 import { connect } from 'react-redux';
-import { 
- searchById, 
- searchByLyric, 
- searchBySong 
-} from './actions';
-import {
- Box,
- Button,
- FormField,
- Grid,
- Heading,
- Paragraph,
- Text,
- TextArea,
- TextInput,
-} from 'grommet';
+import { searchByCategory } from './actions';
 
 
 function App(props) {
- const {
-  searchByLyric, 
-  searchBySong,
-  lyricText,
-  lyricRankings,
-  albumUrl
-  } = props;
-  const [song, setSong] = useState('');
-  const [lyric, setLyric] = useState('');
+
+ const { searchByCategory, response, isFetching, error } = props;
+ const [category, setCategory] = useState('');
+ const [header, setHeader] = useState('');
 
  const onChange = e => {
-  const id = e.target.id;
-  switch (id) {
-   case 'song':
-    setSong(e.target.value);
-    return song;
-   case 'lyric':
-    setLyric(e.target.value);
-    return lyric;
-  }
+  setCategory(e.target.value);
  }
 
  const onSubmit = e => {
   e.preventDefault();
-
+  searchByCategory(category);
+  setHeader(category);
+  setCategory('');
  }
 
-  return (
-   <Grid className="App">
-    <Box className='form' onSubmit={onSubmit} fill pad="medium" overflow="auto" align="start" gap="small" >
-     <Heading>
-      Search Songs
-     </Heading>
-     <FormField className='search song'>
-      Search by song title:
-      <TextInput id='song' onChange={onChange} value={song} disabled={lyric.length > 0 ? true : false} />
-     </FormField><br/>
-     <FormField className='search lyric'>
-      Search by lyrics:
-      <TextInput id='lyric' onChange={onChange} value={lyric} disabled={song.length > 0 ? true : false} />
-     </FormField><br/>
-     <Button type='submit'>
+ return (
+  <div id='body' >
+   <div id='form' >
+    <form className='form' onSubmit={onSubmit} >
+     <h2>
+      Search APIs
+     </h2>
+     <label className='search'>
+      Category:
+      <input id='category' onChange={onChange} value={category} />
+     </label><br/>
+     <button type='submit'>
       Search
-     </Button>
-    </Box>
-    <Box className='results'>
-     {albumUrl ? <img className='cover' src={albumUrl} alt='album cover' /> : null}
-     {lyricRankings ? <Box className='rank' >Rank: {lyricRankings}</Box> : null}
-     {lyricText ? <Box className='text' >{lyricText}</Box> : null}
-    </Box>
-   </Grid>
-  );
+     </button>
+    </form>
+   </div>
+   {response !== null && response.length > 0 ?
+    <div id='results' >
+     <h1 className='category' >
+      {header.toUpperCase()} APIs
+     </h1>
+     {response.map((item, i) => {
+      return(
+       <div className='api' key={i} width='100vw' >
+        <a className='link' href={item.link} >
+         <p className='title' >{item.API}</p>
+         <p className='desc' >{item.Description}</p>
+        </a>
+       </div>
+      )
+     })}
+    </div>
+   : null
+   }
+   {response === null ?
+    <h1 className='category' >
+     Oops! No results for '{header}', try again!
+    </h1>
+    : null
+   }
+  </div>
+ );
 }
 
 const mapState = state => {
  return ({
-  lyricId: state.lyricId,
-  lyricCheckSum: state.lyricCheckSum,
-  lyricText: state.lyricText,
-  lyricRankings: state.lyricRankings,
-  albumUrl: state.albumUrl
+  response: state.response,
+  isFetching: state.isFetching,
+  error: state.error
  })
 }
 
-export default connect(mapState,{searchById, searchByLyric, searchBySong})(App);
+export default connect(mapState,{searchByCategory})(App);

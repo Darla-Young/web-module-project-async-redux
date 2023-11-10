@@ -1,38 +1,90 @@
+#body {
+ display: flex;
+ height: 100vw;
+ width: 100vw;
+ justify-content: space-between;
+ font-family: "Agbalumo", sans-serif;
+ font-weight: lighter;
+ font-size: 16px;
+ padding: 5%;
+ background: url(./media/background.jpg) no-repeat center fixed;
+ background-size: cover;
+}
+
 .App {
-  text-align: center;
+ display: flex;
+ flex-flow: row nowrap;
+ justify-content: flex-start;
+ align-items: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+#form {
+ width: 25vw;
+ height: fit-content;
+ background-color: blueviolet;
+ opacity: 80%;
+ padding: 2%;
+ border-radius: 50px;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ font-family: Agbalumo;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.form {
+ text-align: center;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+label {
+ font-family: "Raleway", sans-serif;
+ font-size: 12px;
 }
 
-.App-link {
-  color: #61dafb;
+#category {
+ font-size: 16px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+input {
+ width: 100%;
+}
+
+button {
+ color:aqua;
+ background-color: black;
+ padding: 2% 10%;
+ border-radius: 30px;
+}
+
+h2 {
+ color: black;
+}
+
+#results {
+ display: flex;
+ flex-direction: column;
+ justify-content: flex-start;
+ align-items: flex-start;
+ background-color: rgb(43, 204, 78);
+ padding: 2%;
+ border-radius: 30px;
+ opacity: 70%;
+}
+
+h1 {
+ color: black;
+}
+
+.title {
+ padding-top: 4%;
+ font-size: 18px;
+ font-weight: bolder;
+}
+
+.desc {
+ font-family: "Raleway", sans-serif;
+}
+
+p {
+ margin: 0;
+ padding: 0;
 }

@@ -1,9 +1,7 @@
 import { SEARCH_START, SEARCH_SUCCESS, SEARCH_FAIL } from '../actions'
 
 const initialState = {
- lyricText: '',
- lyricRankings: '',
- albumUrl: '',
+ response: [],
  isFetching: false,
  error: ''
 }
@@ -15,21 +13,22 @@ const reducer = (state=initialState, action) => {
     ...state,
     isFetching: true
    }
+   break;
   case SEARCH_SUCCESS:
    return {
     ...state,
-    lyricText: action.payload.lyricText,
-    lyricRankings: action.payload.lyricRankings,
-    albumUrl: action.payload.albumUrl,
+    response: action.payload,
     isFetching: false,
     error: ''
    }
+   break;
   case SEARCH_FAIL:
    return {
     ...state,
     isFetching: false,
     error: action.payload
    }
+   break;
   default:
    return state;
  }
